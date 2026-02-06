@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>Student Management System</h2>
+
+  <div class="form-section">
+    <div class="input-group">
+      <input [(ngModel)]="form.name" name="name" placeholder="Name">
+    </div>
+    
+    <div class="input-group">
+      <input [(ngModel)]="form.age" name="age" type="number" placeholder="Age">
+    </div>
+
+    <div class="input-group">
+      <input [(ngModel)]="form.course" name="course" placeholder="Course">
+    </div>
+
+    <button type="button" (click)="$event.preventDefault(); submitForm()">
+      {{ editingId ? 'Update' : 'Add' }}
+    </button>
+
+    <button type="button" (click)="$event.preventDefault(); resetForm()">Clear</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Serial</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{ s.serial_no }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.age }}</td>
+        <td>{{ s.course }}</td>
+        <td>
+          <button style="padding: 5px 10px; font-size: 12px; margin-right: 5px;" 
+                  type="button" (click)="$event.preventDefault(); editStudent(s)">Edit</button>
+          <button style="padding: 5px 10px; font-size: 12px; background: #e2e8f0; color: #333;" 
+                  type="button" (click)="$event.preventDefault(); deleteStudent(s.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button type="button" (click)="$event.preventDefault(); changePage(currentPage - 1)" [disabled]="!hasPrevPage()">⬅ Prev</button>
+    <button type="button" (click)="$event.preventDefault(); changePage(currentPage + 1)" [disabled]="!hasNextPage()">Next ➡</button>
+  </div>
+</div>

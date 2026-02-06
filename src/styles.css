@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 40px 20px; 
+  box-sizing: border-box;
+}
+
+
+app-root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
